@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+        <div clss="col-md-8 offset-md-2">
+            <a href="/items/newItem" class="btn btn-success">New Item</a>
+            <br />
+            <table class="table table-hover table-bordered table-striped">
+                <tr>
+                    <th>Title</th>
+                    <th>Category Name</th>
+                    <th>Due Date</th>
+                    <th>Mark as Completed</th>
+                </tr>
+                <% for(let i=0;i<items.length;i++){ %>
+                    <tr>
+                        <td>
+                            <%= items[i].Title %>
+                        </td>
+                        <td>
+                            <%= items[i].Name %>
+                        </td>
+                        <td>
+                            <%= items[i].DueDate.toDateString() %>
+                        </td>
+                        <td>
+                            <form method="post" action="/items/markAsCompleted">
+                                <input name="id" type="hidden" value="<%= items[i].Id %>" />
+                                <button class="btn btn-primary">Mark as Completed</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% }%>
+            </table>
+        </div>
+    </div>
+</div>
